@@ -14,9 +14,11 @@
 		5C827C751C6FD9AC009F7965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C827C741C6FD9AC009F7965 /* Assets.xcassets */; };
 		5C827C781C6FD9AC009F7965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C827C761C6FD9AC009F7965 /* LaunchScreen.storyboard */; };
 		5C827C831C6FD9AC009F7965 /* LightpostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C827C821C6FD9AC009F7965 /* LightpostTests.swift */; };
+		5C9037BC1C77C6D800A3875B /* TweetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9037BB1C77C6D800A3875B /* TweetsCell.swift */; };
 		5C9B256A1C6FE2BA00E08853 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B25691C6FE2BA00E08853 /* TwitterClient.swift */; };
 		5C9B256D1C71728A00E08853 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B256C1C71728A00E08853 /* User.swift */; };
 		5C9B256F1C71729E00E08853 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B256E1C71729E00E08853 /* Tweet.swift */; };
+		5CACDF451C7400C9000F6799 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CACDF441C7400C9000F6799 /* TweetsViewController.swift */; };
 		AC128BDE32013E61830FCFAF /* Pods_Lightpost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18279127D8EECB341524E918 /* Pods_Lightpost.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,9 +46,11 @@
 		5C827C7E1C6FD9AC009F7965 /* LightpostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightpostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C827C821C6FD9AC009F7965 /* LightpostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightpostTests.swift; sourceTree = "<group>"; };
 		5C827C841C6FD9AC009F7965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C9037BB1C77C6D800A3875B /* TweetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsCell.swift; sourceTree = "<group>"; };
 		5C9B25691C6FE2BA00E08853 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		5C9B256C1C71728A00E08853 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5C9B256E1C71729E00E08853 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		5CACDF441C7400C9000F6799 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		8AFB5DC540C15DE8832ABB37 /* Pods-Lightpost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightpost.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lightpost/Pods-Lightpost.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,10 +109,12 @@
 				5C827C6A1C6FD9AB009F7965 /* AppDelegate.swift */,
 				5C827C6C1C6FD9AB009F7965 /* ViewController.swift */,
 				5C827C6E1C6FD9AB009F7965 /* Main.storyboard */,
+				5C9037BB1C77C6D800A3875B /* TweetsCell.swift */,
 				5C827C741C6FD9AC009F7965 /* Assets.xcassets */,
 				5C827C761C6FD9AC009F7965 /* LaunchScreen.storyboard */,
 				5C827C791C6FD9AC009F7965 /* Info.plist */,
 				5C827C711C6FD9AB009F7965 /* Lightpost.xcdatamodeld */,
+				5CACDF441C7400C9000F6799 /* TweetsViewController.swift */,
 			);
 			path = Lightpost;
 			sourceTree = "<group>";
@@ -304,8 +310,10 @@
 				5C827C6D1C6FD9AB009F7965 /* ViewController.swift in Sources */,
 				5C827C6B1C6FD9AB009F7965 /* AppDelegate.swift in Sources */,
 				5C9B256F1C71729E00E08853 /* Tweet.swift in Sources */,
+				5CACDF451C7400C9000F6799 /* TweetsViewController.swift in Sources */,
 				5C9B256D1C71728A00E08853 /* User.swift in Sources */,
 				5C827C731C6FD9AB009F7965 /* Lightpost.xcdatamodeld in Sources */,
+				5C9037BC1C77C6D800A3875B /* TweetsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
