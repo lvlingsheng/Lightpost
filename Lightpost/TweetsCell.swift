@@ -37,6 +37,8 @@ class TweetsCell: UITableViewCell {
             self.userAvatar.setImageWithURL(avatarURL!)
             self.userAvatar.layer.cornerRadius=25
             self.userAvatar.layer.masksToBounds=true
+            self.userAvatar.layer.borderColor = UIColor(white: 0.5, alpha: 0.8).CGColor
+            self.userAvatar.layer.borderWidth = 2;
             self.userName.text = tweet.user?.name
             self.UserTweets.text = tweet.text
             self.didRetweet=tweet.didretweeted!
