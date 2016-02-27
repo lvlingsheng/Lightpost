@@ -20,6 +20,11 @@ class User: NSObject {
     var profilelargeImageURL:String?
     var tagline:String?
     var dictionary:NSDictionary
+    var numFollowers: Int?
+    var numFollowing: Int?
+    var numTweets: Int?
+    var profileBackgroundUrl: String?
+    var profileBackgroundColor: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary=dictionary
@@ -29,6 +34,12 @@ class User: NSObject {
         profilelargeImageURL = profileImageURL!.stringByReplacingOccurrencesOfString("normal", withString: "bigger", options: NSStringCompareOptions.LiteralSearch, range: nil)
 
         tagline = dictionary["description"] as? String
+        
+        profileBackgroundUrl = dictionary["profile_banner_url"] as? String
+        profileBackgroundColor = dictionary["profile_background_color"] as? String
+        numTweets = dictionary["statuses_count"] as? Int
+        numFollowers = dictionary["followers_count"] as? Int
+        numFollowing = dictionary["friends_count"] as? Int
     }
     
     

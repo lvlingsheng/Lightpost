@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+
+
+
 class TweetsCell: UITableViewCell {
 
     @IBOutlet weak var retweetButton: UIButton!
@@ -19,13 +23,15 @@ class TweetsCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
+
+    let tapProfileDetail = UITapGestureRecognizer()
     
-    var didRetweet = false
-    var didTouchFavourite = false
     var tweetId: Int!
     var original_tweet_id:Int!
     var retweet_id: Int!
     var original_tweet: NSDictionary!
+    var didRetweet: Bool!
+    var didTouchFavourite: Bool!
     var tweet: Tweet! {
         didSet {
             tweetId = tweet.id
@@ -41,8 +47,8 @@ class TweetsCell: UITableViewCell {
             self.userAvatar.layer.borderWidth = 2;
             self.userName.text = tweet.user?.name
             self.UserTweets.text = tweet.text
-            self.didRetweet=tweet.didretweeted!
-            self.didTouchFavourite = tweet.didfav!
+            didRetweet = tweet.didretweeted!
+            didTouchFavourite = tweet.didfav!
             if(didTouchFavourite == true){
                 self.favButton.setImage(UIImage(named: "like-action-on-red"), forState: .Normal)
             }else{
@@ -75,6 +81,22 @@ class TweetsCell: UITableViewCell {
         stackView.arrangedSubviews.last?.hidden = true
     }
 
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+
+        
+        tapProfileDetail.addTarget(self, action: "profileDetailSegue")
+        userAvatar.addGestureRecognizer(tapProfileDetail)
+        userAvatar.userInteractionEnabled = true
+        
+        }
+    
+    func profileDetailSegue() {
+        NSNotificationCenter.defaultCenter().postNotificationName("profileDetailNotification", object: nil, userInfo: ["user" : tweet.user!])
+    }
+    
 //    override func setSelected(selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //        UIView.animateWithDuration(0.5,
@@ -106,14 +128,18 @@ class TweetsCell: UITableViewCell {
         if !didRetweet {
             //perform retweet logics
             TwitterClient.sharedInstance.retweetStatus(tweetId) { error in
-                self.tweet.RetweetNumber! += 1
+                let temptweet = self.tweet
+                temptweet.RetweetNumber! += 1
                 self.retweetButton.setImage(UIImage(named: "retweet-action-on-green"), forState: .Normal)
-                self.RetweetNumber.text = "\(self.tweet.RetweetNumber!)"
+                self.RetweetNumber.text = "\(temptweet.RetweetNumber!)"
                 self.didRetweet = true
+                temptweet.didretweeted=true
+                self.tweet = temptweet
+                print("1")
             }
         } else {
             // step 1
-            if(didRetweet==false){
+            if(didRetweet == false){
                 print("Haved retweeted yet")
             }
             // you cannot unretweet a tweet that has not retweeted
@@ -129,15 +155,19 @@ class TweetsCell: UITableViewCell {
             
             TwitterClient.sharedInstance.showStatus(original_tweet_id!, completion: { (status, error) -> () in
                 self.original_tweet = status
-                print(self.original_tweet["current_user_retweet"]!["id"])
+                //print(self.original_tweet["current_user_retweet"]!["id"])
                 self.retweet_id = self.original_tweet["current_user_retweet"]!["id"] as! Int
-                print(self.retweet_id)
+                //print(self.retweet_id)
                 
                 TwitterClient.sharedInstance.unretweetStatus(self.retweet_id, completion: { (error) -> () in
-                    self.tweet.RetweetNumber! -= 1
+                    let temptweet = self.tweet
+                    temptweet.RetweetNumber! -= 1
                     self.retweetButton.setImage(UIImage(named: "retweet-action_default"), forState: .Normal)
-                    self.RetweetNumber.text = "\(self.tweet.RetweetNumber!)"
+                    self.RetweetNumber.text = "\(temptweet.RetweetNumber!)"
                     self.didRetweet = false
+                    temptweet.didretweeted=false
+                    self.tweet = temptweet
+                    print("2")
                 })
             })
             
@@ -156,18 +186,24 @@ class TweetsCell: UITableViewCell {
         if !didTouchFavourite {
             //call favourite
             TwitterClient.sharedInstance.favoriteStatus(tweetId) { errror in
+                let temptweet = self.tweet
                 self.didTouchFavourite = true
-                self.tweet.favNumber! += 1
+                temptweet.favNumber! += 1
                 self.favButton.setImage(UIImage(named: "like-action-on-red"), forState: .Normal)
-                self.FavNumber.text = "\(self.tweet.favNumber!)"
+                self.FavNumber.text = "\(temptweet.favNumber!)"
+                temptweet.didfav=true
+                self.tweet=temptweet
             }
         } else {
             //call unfavouriteStatus
             TwitterClient.sharedInstance.unfavoriteStatus(tweetId) { error in
+                let temptweet = self.tweet
                 self.didTouchFavourite = false
-                self.tweet.favNumber! -= 1
+                temptweet.favNumber! -= 1
                 self.favButton.setImage(UIImage(named: "like-action-off"), forState: .Normal)
-                self.FavNumber.text = "\(self.tweet.favNumber!)"
+                self.FavNumber.text = "\(temptweet.favNumber!)"
+                temptweet.didfav=false
+                self.tweet=temptweet
             }
         }
 

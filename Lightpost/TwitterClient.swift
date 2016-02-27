@@ -61,6 +61,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func getRetweets(original_tweet_id:Int?, completion: (retweetslist: [Tweet]?, error: NSError?) -> ()) {
+        
+        GET("1.1/statuses/retweets/\(original_tweet_id!).json", parameters: nil, success: { (operation:NSURLSessionDataTask!, response:AnyObject?) -> Void in
+            print(response)
+            let originaltweets = response as! [Tweet]
+            completion(retweetslist: originaltweets, error:nil)
+            }, failure: { (operation:NSURLSessionDataTask?, error:NSError) -> Void in
+                print("error getting homeTimeline")
+                completion(retweetslist: nil, error: error)
+                
+                
+        })
+    }
+    
     func favoriteStatus(tweetID: Int, completion: (error: NSError?) -> ()) {
         POST("/1.1/favorites/create.json", parameters: ["id": tweetID], success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             completion(error: nil)
@@ -82,7 +96,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     func retweetStatus(tweetID: Int, completion: (retweetedTweetID: Int?, error: NSError?) -> ()) {
         POST("/1.1/statuses/retweet/\(String(tweetID)).json", parameters: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             //let tweetArray = Tweet.tweetsfromJSON(JSON(response))
-            print(response)
+            //print(response)
             //completion(retweetedTweetID: tweetArray.first?.tweetID, error: nil)
             }, failure: { (operation: NSURLSessionDataTask?, err: NSError!) -> Void in
                 completion(retweetedTweetID: nil, error: err)
@@ -119,6 +133,16 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func tweetWithParams(params: NSDictionary!, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        POST("1.1/statuses/update.json", parameters: params, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("successful tweet")
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet: tweet, error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("failed tweet")
+                completion(tweet: nil, error: error)
+        })
+    }
 
     func openURL(url:NSURL){
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken:BDBOAuth1Credential!) -> Void in

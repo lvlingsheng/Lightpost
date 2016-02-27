@@ -15,6 +15,7 @@ let estimatedHeight: CGFloat = 200
 let topInset: CGFloat = 20
 var tablesize : NSInteger = 20
 
+
 class TweetsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate {
     
     
@@ -61,13 +62,32 @@ class TweetsViewController: UIViewController,UITableViewDataSource,UITableViewDe
             //print(tweets![0].user?.profilelargeImageURL)
             
         }
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "profileDetailSegue:", name: "profileDetailNotification", object: nil)
         
         tableView.delegate=self
         tableView.dataSource=self
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("willappear")
+        TwitterClient.sharedInstance.homeTimelineWithParams(params) { (tweets, error) -> () in
+            self.tweets=tweets
+            self.tableView.reloadData()
+            print(tweets?.count)
+
+            
+        }
+    }
+    
+    func profileDetailSegue(notification: NSNotification) {
+        print("3")
+        let temp = notification.userInfo!["user"] as! User
+        print(temp.name)
+        self.performSegueWithIdentifier("profileDetailsegue", sender: notification.userInfo!["user"])
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -85,7 +105,7 @@ class TweetsViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetsCell", forIndexPath: indexPath) as! TweetsCell
         
-//        print(indexPath.row)
+//      print(indexPath.row)
         cell.tweet = tweets![indexPath.row]
         return cell
     }
@@ -105,6 +125,12 @@ class TweetsViewController: UIViewController,UITableViewDataSource,UITableViewDe
             tableView.endUpdates()
             
             return nil
+        }else if let selectedIndex = tableView.indexPathForSelectedRow where selectedIndex != indexPath{
+            let cell = tableView.cellForRowAtIndexPath(selectedIndex) as! TweetsCell
+            tableView.beginUpdates()
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            cell.changeCellStatus(false)
+            tableView.endUpdates()
         }
         
         return indexPath
@@ -178,15 +204,38 @@ class TweetsViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
         }
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "detailSegue" {
+
+            let cell = self.tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!) as! TweetsCell
+            let detailController = segue.destinationViewController as! detailViewController
+            
+            let selectedRow = (self.tableView.indexPathForSelectedRow?.row)! as NSInteger
+            
+            detailController.tweet = tweets![selectedRow]
+            
+            self.tableView.beginUpdates()
+            self.tableView.deselectRowAtIndexPath((self.tableView.indexPathForSelectedRow)!, animated: true)
+            cell.changeCellStatus(false)
+            self.tableView.endUpdates()
+
+            //detailController.index = selectedRow
+            
+            
+        }else if segue.identifier == "profileDetailsegue" {
+            let user = sender as! User
+            let profileDetailViewController = segue.destinationViewController as! profileViewController
+            profileDetailViewController.user = user
+        }
+        
     }
-    */
+    
 
 }
 

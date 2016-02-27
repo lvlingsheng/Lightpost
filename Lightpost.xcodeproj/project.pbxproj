@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C2F880A1C7D2D0300B4DF90 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F88091C7D2D0300B4DF90 /* detailViewController.swift */; };
+		5C2F880C1C7F8B0800B4DF90 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F880B1C7F8B0800B4DF90 /* CommentCell.swift */; };
+		5C2F880E1C7FE3AD00B4DF90 /* composeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F880D1C7FE3AD00B4DF90 /* composeViewController.swift */; };
+		5C2F88101C80EF9B00B4DF90 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F880F1C80EF9B00B4DF90 /* profileViewController.swift */; };
+		5C6D70851C814BDC00A15F8C /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D70841C814BDC00A15F8C /* FXBlurView.m */; };
 		5C827C6B1C6FD9AB009F7965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C827C6A1C6FD9AB009F7965 /* AppDelegate.swift */; };
 		5C827C6D1C6FD9AB009F7965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C827C6C1C6FD9AB009F7965 /* ViewController.swift */; };
 		5C827C701C6FD9AB009F7965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C827C6E1C6FD9AB009F7965 /* Main.storyboard */; };
@@ -36,6 +41,13 @@
 /* Begin PBXFileReference section */
 		18279127D8EECB341524E918 /* Pods_Lightpost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lightpost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C6223935E5656F69E448E0 /* Pods-Lightpost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightpost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightpost/Pods-Lightpost.debug.xcconfig"; sourceTree = "<group>"; };
+		5C2F88091C7D2D0300B4DF90 /* detailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
+		5C2F880B1C7F8B0800B4DF90 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		5C2F880D1C7FE3AD00B4DF90 /* composeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = composeViewController.swift; sourceTree = "<group>"; };
+		5C2F880F1C80EF9B00B4DF90 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		5C6D70821C814BDB00A15F8C /* Lightpost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lightpost-Bridging-Header.h"; sourceTree = "<group>"; };
+		5C6D70831C814BDC00A15F8C /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		5C6D70841C814BDC00A15F8C /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		5C827C671C6FD9AB009F7965 /* Lightpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lightpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C827C6A1C6FD9AB009F7965 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C827C6C1C6FD9AB009F7965 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,14 +122,18 @@
 				5C9B25661C6FE10F00E08853 /* API */,
 				5C827C6A1C6FD9AB009F7965 /* AppDelegate.swift */,
 				5C827C6C1C6FD9AB009F7965 /* ViewController.swift */,
+				5CACDF441C7400C9000F6799 /* TweetsViewController.swift */,
 				5C827C6E1C6FD9AB009F7965 /* Main.storyboard */,
+				5C2F880F1C80EF9B00B4DF90 /* profileViewController.swift */,
+				5C2F880D1C7FE3AD00B4DF90 /* composeViewController.swift */,
+				5C2F880B1C7F8B0800B4DF90 /* CommentCell.swift */,
+				5C2F88091C7D2D0300B4DF90 /* detailViewController.swift */,
 				5C9037BB1C77C6D800A3875B /* TweetsCell.swift */,
 				5C827C741C6FD9AC009F7965 /* Assets.xcassets */,
 				5C9037BD1C7A79A000A3875B /* TwitterLogo_#55acee.png */,
 				5C827C761C6FD9AC009F7965 /* LaunchScreen.storyboard */,
 				5C827C791C6FD9AC009F7965 /* Info.plist */,
 				5C827C711C6FD9AB009F7965 /* Lightpost.xcdatamodeld */,
-				5CACDF441C7400C9000F6799 /* TweetsViewController.swift */,
 			);
 			path = Lightpost;
 			sourceTree = "<group>";
@@ -144,6 +160,9 @@
 			children = (
 				5C9B256C1C71728A00E08853 /* User.swift */,
 				5C9B256E1C71729E00E08853 /* Tweet.swift */,
+				5C6D70831C814BDC00A15F8C /* FXBlurView.h */,
+				5C6D70841C814BDC00A15F8C /* FXBlurView.m */,
+				5C6D70821C814BDB00A15F8C /* Lightpost-Bridging-Header.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -310,10 +329,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2F880E1C7FE3AD00B4DF90 /* composeViewController.swift in Sources */,
 				5C9B256A1C6FE2BA00E08853 /* TwitterClient.swift in Sources */,
+				5C2F88101C80EF9B00B4DF90 /* profileViewController.swift in Sources */,
+				5C6D70851C814BDC00A15F8C /* FXBlurView.m in Sources */,
 				5C827C6D1C6FD9AB009F7965 /* ViewController.swift in Sources */,
+				5C2F880A1C7D2D0300B4DF90 /* detailViewController.swift in Sources */,
 				5C827C6B1C6FD9AB009F7965 /* AppDelegate.swift in Sources */,
 				5C9B256F1C71729E00E08853 /* Tweet.swift in Sources */,
+				5C2F880C1C7F8B0800B4DF90 /* CommentCell.swift in Sources */,
 				5CACDF451C7400C9000F6799 /* TweetsViewController.swift in Sources */,
 				5C9B256D1C71728A00E08853 /* User.swift in Sources */,
 				5C827C731C6FD9AB009F7965 /* Lightpost.xcdatamodeld in Sources */,
@@ -445,10 +469,13 @@
 			baseConfigurationReference = 20C6223935E5656F69E448E0 /* Pods-Lightpost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Lightpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LLS.Lightpost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lightpost/Lightpost-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -457,10 +484,12 @@
 			baseConfigurationReference = 8AFB5DC540C15DE8832ABB37 /* Pods-Lightpost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Lightpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LLS.Lightpost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lightpost/Lightpost-Bridging-Header.h";
 			};
 			name = Release;
 		};
