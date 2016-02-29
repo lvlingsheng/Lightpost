@@ -33,6 +33,8 @@ class profileViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         scrollView.delegate = self
         
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         print(user.name)
         print(user.numFollowers)
 //        if user.profileBackgroundUrl != nil {

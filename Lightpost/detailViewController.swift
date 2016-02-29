@@ -70,9 +70,10 @@ class detailViewController: UIViewController{
         self.userAvatar.layer.borderColor = UIColor(white: 0.5, alpha: 0.8).CGColor
         self.userAvatar.layer.borderWidth = 2
         // Do any additional setup after loading the view.
-
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.title = tweet.user?.name
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

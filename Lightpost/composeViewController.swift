@@ -24,6 +24,8 @@ class composeViewController: UIViewController,UITextViewDelegate {
         if talkto != nil {
             wordRemain.text = "\(maxword - textView.text.characters.count)"
         }
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {
